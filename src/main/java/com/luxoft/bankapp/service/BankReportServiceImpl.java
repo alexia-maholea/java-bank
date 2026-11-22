@@ -9,8 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class BankReportServiceImpl implements BankReportService
 {
+    @Autowired 
     private Storage<Client> storage;
 
     @Override

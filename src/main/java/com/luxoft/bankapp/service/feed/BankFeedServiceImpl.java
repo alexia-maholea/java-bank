@@ -16,10 +16,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class BankFeedServiceImpl implements BankFeedService
 {
     private Banking banking;
 
+    @Autowired
     public BankFeedServiceImpl(Banking banking)
     {
         this.banking = banking;
