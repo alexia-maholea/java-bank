@@ -14,12 +14,17 @@ import com.luxoft.bankapp.service.feed.BankFeedServiceImpl;
 import com.luxoft.bankapp.service.storage.ClientStorage;
 import com.luxoft.bankapp.service.storage.Storage;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+@Configuration
+@ComponentScan("com.luxoft.bankapp")
 public class BankApplication
 {
     private static final String[] CLIENT_NAMES =
@@ -27,8 +32,7 @@ public class BankApplication
 
     public static void main(String[] args)
     {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("application-context.xml", "test-clients.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(BankApplication.class);
 
         Banking banking = initialize(context);
 
@@ -85,7 +89,7 @@ public class BankApplication
     {
         System.out.println("\n=== Using BankReportService ===\n");
 
-        BankReportService reportService = (BankReportService) context.getBean("bankReport");
+        BankReportService reportService = context.getBean(BankReportService.class);
 
         System.out.println("Number of clients: " + reportService.getNumberOfBankClients());
 
@@ -155,7 +159,7 @@ public class BankApplication
      */
     public static Banking initialize(ApplicationContext context)
     {
-        Banking banking = (Banking) context.getBean("banking");
+        Banking banking = context.getBean(Banking.class);
 
         Client client_1 = (Client) context.getBean("client1");
         Client client_2 = (Client) context.getBean("client2");
