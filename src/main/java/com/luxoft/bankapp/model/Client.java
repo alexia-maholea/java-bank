@@ -94,6 +94,12 @@ public class Client implements Identifiable, Serializable
         return Collections.unmodifiableSet(accounts);
     }
 
+    public void setAccounts(Set<Account> accounts)
+    {
+        this.accounts.clear();
+        this.accounts.addAll(accounts);
+    }
+
     public Account getAccount(AccountType type)
     {
         for (Account account : accounts)
