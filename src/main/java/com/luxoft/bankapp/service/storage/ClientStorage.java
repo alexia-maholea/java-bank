@@ -1,5 +1,7 @@
 package com.luxoft.bankapp.service.storage;
 
+import org.springframework.stereotype.Service;
+
 import com.luxoft.bankapp.model.Client;
 
 @Service
