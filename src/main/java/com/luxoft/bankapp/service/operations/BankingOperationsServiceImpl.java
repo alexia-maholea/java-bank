@@ -1,8 +1,11 @@
 package com.luxoft.bankapp.service.operations;
 
+import org.springframework.stereotype.Service;
+
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Client;
 
+@Service 
 public class BankingOperationsServiceImpl implements BankingOperationsService {
     @Override
     public double getBalance(Client client) {
